@@ -1,0 +1,1282 @@
+{
+    "AAA000174794": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "25 May 2026",
+        "localArea": "Unknown",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA000236211": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "Unknown",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB000142794": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "Unknown",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB000226907": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC000145449": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA000315841": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "u",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA000454073": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB000378957": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB000433664": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC000387662": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC000487332": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA000525873": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA000673376": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB000512089": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB000644644": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA000746671": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA000861935": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB000832995": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC000720275": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC000825083": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA000945283": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA001083452": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB000981343": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC000969044": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC001078928": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA001124830": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA001212789": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA001313263": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA001410682": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAA001557569": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB001044016": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB001163750": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB001233506": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB001379251": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAB001416504": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC001123732": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC001257353": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC001380192": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "AAC001493774": {
+        "amount": 100,
+        "type": "Time Limited PLC",
+        "expiryDate": "10 June 2026",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_limited.jpg"
+    },
+    "ABC004582354": {
+        "amount": 12,
+        "type": "Time Limited PLC",
+        "expiryDate": "9 May 2026",
+        "localArea": "Test",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_12_limited.jpg"
+    },
+    "AAA001694374": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA001760142": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA001895030": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA001999714": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002037640": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002144406": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002248936": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002342692": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002460877": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002590433": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002671245": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Burned - Removed from Circulation",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB001562680": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB001680449": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB001710971": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB001825250": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB001982273": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002074797": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002162453": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002233208": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002344764": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002410254": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002543527": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002690355": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002790051": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002850704": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB002985450": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB003047027": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC001554570": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC001656512": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC001765428": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC001853996": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC001999383": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC002035038": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC002176830": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC002229404": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC002310915": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Burned - Removed from Circulation",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC002471811": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "U",
+        "fraudStatus": "Burned - Removed from Circulation",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002963488": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAA003094650": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAA003123414": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAA003263089": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAA003391433": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAA003462563": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAA003554467": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAA003673731": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAA003728306": {
+        "amount": 50,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_50_forever.jpg"
+    },
+    "AAC003142288": {
+        "amount": 10,
+        "type": "Time Limited PLC",
+        "expiryDate": "Infinity",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_limited.jpg"
+    },
+    "AAA002761754": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA002897275": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAC002530862": {
+        "amount": 5,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_5_forever.jpg"
+    },
+    "AAC002612783": {
+        "amount": 5,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_5_forever.jpg"
+    },
+    "AAC002744832": {
+        "amount": 5,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_5_forever.jpg"
+    },
+    "AAC002866772": {
+        "amount": 5,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_5_forever.jpg"
+    },
+    "AAC002995816": {
+        "amount": 5,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_5_forever.jpg"
+    },
+    "AAC003030516": {
+        "amount": 5,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_5_forever.jpg"
+    },
+    "AAB003126941": {
+        "amount": 500,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_500_forever.jpg"
+    },
+    "AAB003237974": {
+        "amount": 500,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_500_forever.jpg"
+    },
+    "AAB003341372": {
+        "amount": 500,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_500_forever.jpg"
+    },
+    "AAC003278685": {
+        "amount": 100,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_forever.jpg"
+    },
+    "AAC003386981": {
+        "amount": 100,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_100_forever.jpg"
+    },
+    "AAC003416293": {
+        "amount": 20,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_20_forever.jpg"
+    },
+    "AAC003530252": {
+        "amount": 20,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_20_forever.jpg"
+    },
+    "AAC003666893": {
+        "amount": 20,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_20_forever.jpg"
+    },
+    "AAC003766615": {
+        "amount": 20,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_20_forever.jpg"
+    },
+    "AAC003864099": {
+        "amount": 20,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_20_forever.jpg"
+    },
+    "AAC003983035": {
+        "amount": 20,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_20_forever.jpg"
+    },
+    "AAC004050273": {
+        "amount": 20,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_20_forever.jpg"
+    },
+    "AAC004130928": {
+        "amount": 20,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_20_forever.jpg"
+    },
+    "AAB003465667": {
+        "amount": 2,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_2_forever.jpg"
+    },
+    "AAB003525509": {
+        "amount": 2,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_2_forever.jpg"
+    },
+    "AAB003698462": {
+        "amount": 2,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_2_forever.jpg"
+    },
+    "AAB003714040": {
+        "amount": 2,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_2_forever.jpg"
+    },
+    "AAB003854684": {
+        "amount": 2,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_2_forever.jpg"
+    },
+    "AAB003999061": {
+        "amount": 2,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_2_forever.jpg"
+    },
+    "AAB004066228": {
+        "amount": 2,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_2_forever.jpg"
+    },
+    "AAA003873467": {
+        "amount": 16,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_16_forever.jpg"
+    },
+    "AAA003951365": {
+        "amount": 16,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_16_forever.jpg"
+    },
+    "AAA004042993": {
+        "amount": 16,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_16_forever.jpg"
+    },
+    "AAA004137728": {
+        "amount": 16,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_16_forever.jpg"
+    },
+    "AAA004283374": {
+        "amount": 16,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_16_forever.jpg"
+    },
+    "AAA004337580": {
+        "amount": 16,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_16_forever.jpg"
+    },
+    "AAA004454857": {
+        "amount": 16,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_16_forever.jpg"
+    },
+    "AAB004133653": {
+        "amount": 10,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_forever.jpg"
+    },
+    "AAB004248197": {
+        "amount": 10,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_forever.jpg"
+    },
+    "AAB004346257": {
+        "amount": 10,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_forever.jpg"
+    },
+    "AAB004499247": {
+        "amount": 10,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_forever.jpg"
+    },
+    "AAB004537296": {
+        "amount": 10,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_forever.jpg"
+    },
+    "AAB004654406": {
+        "amount": 10,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_forever.jpg"
+    },
+    "AAB004738950": {
+        "amount": 10,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_forever.jpg"
+    },
+    "AAB004838995": {
+        "amount": 10,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_10_forever.jpg"
+    },
+    "AAC004114833": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAC004295888": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAC004310536": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAC004483136": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAC004572461": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAC004616339": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAA004563500": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAA004639904": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAA004713121": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAA004838520": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAA004947182": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAA005075288": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAA005153416": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAC004725711": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAC004896465": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAC004938826": {
+        "amount": 8,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_8_forever.jpg"
+    },
+    "AAC005091783": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAC005183599": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAC005215755": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAA005282632": {
+        "amount": 4,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_4_forever.jpg"
+    },
+    "AAB004834399": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB004932868": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB005049854": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB005167590": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAB005236257": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA005321589": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA005411627": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA005586062": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA005620490": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    },
+    "AAA005780069": {
+        "amount": 1,
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "NPC",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1_forever.jpg"
+    }
+}

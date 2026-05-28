@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLONHFVERSE - PLC Ledger</title>
+    <style>
+        body { font-family: monospace; background-color: #121212; color: #00ff00; padding: 20px; }
+        .container { max-width: 600px; margin: auto; border: 1px solid #00ff00; padding: 20px; background: #1a1a1a; }
+        input, button { background: #222; color: #00ff00; border: 1px solid #00ff00; padding: 10px; margin-top: 10px; width: 100%; box-sizing: border-box; font-family: monospace; font-size: 16px;}
+        button:hover { background: #00ff00; color: #121212; cursor: pointer; font-weight: bold;}
+        #results { margin-top: 20px; display: none; border-top: 1px dashed #00ff00; padding-top: 20px; }
+        .danger { color: #ff3333; border-color: #ff3333; }
+        .danger:hover { background: #ff3333; color: #121212; }
+        .asset-image { width: 100%; max-width: 400px; border: 2px solid #00ff00; border-radius: 5px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>[ PLONHFG Central Bank Explorer ]</h2>
+    <p>Enter your 12-character PLC Serial Code to verify asset integrity and Time-to-Live (TTL).</p>
+    
+    <input type="text" id="serialInput" placeholder="e.g., ABC004589479">
+    <button onclick="checkLedger()">Verify Note</button>
+
+    <div id="results">
+        <img id="resImage" class="asset-image" src="" alt="PLC Visual Reference">
+
+        <p><strong>Amount:</strong> <span id="resAmount"></span> PLC</p>
+        <p><strong>Asset Class:</strong> <span id="resType"></span></p>
+        <p><strong>Expiration Protocol:</strong> <span id="resExpiry"></span></p>
+        <p><strong>Issued To:</strong> <span id="resArea"></span></p>
+        <p><strong>System Status:</strong> <span id="resStatus"></span></p>
+        
+        <button id="fraudBtn" class="danger" onclick="reportFraud()">REPORT COUNTERFEIT TO ADMIN</button>
+    </div>
+</div>
+
+<script>
+    let database = {};
+    let currentSerial = "";
+
+    // Fetch the master ledger from the GitHub server when the page loads
+    fetch('database.json')
+        .then(response => response.json())
+        .then(data => {
+            database = data;
+            console.log("System Status: Ledger synchronized.");
+        })
+        .catch(error => console.error('Error loading database:', error));
+
+    function checkLedger() {
+        const input = document.getElementById('serialInput').value.trim();
+        const resultsDiv = document.getElementById('results');
+        
+        // Save the input so the Report Fraud button knows what to send
+        currentSerial = input; 
+        
+        if (database[input]) {
+            // --- VALID NODE FOUND IN LEDGER ---
+            document.getElementById('resImage').src = database[input].imagePath;
+            document.getElementById('resAmount').innerText = database[input].amount;
+            document.getElementById('resType').innerText = database[input].type;
+            document.getElementById('resExpiry').innerText = database[input].expiryDate;
+            document.getElementById('resArea').innerText = database[input].localArea;
+            document.getElementById('resStatus').innerText = database[input].fraudStatus;
+            
+            // Color coding the status
+            if(database[input].fraudStatus.includes("FLAGGED")) {
+                document.getElementById('resStatus').style.color = "#ff3333";
+            } else {
+                document.getElementById('resStatus').style.color = "#00ff00"; // Green for clean
+            }
+
+            // Color coding the expiry
+            if(database[input].type === "Time Limited PLC") {
+                document.getElementById('resExpiry').style.color = "yellow";
+            } else {
+                document.getElementById('resExpiry').style.color = "#00ff00";
+            }
+            
+        } else {
+            // --- UNKNOWN SERIAL: ZERO-TRUST DENY BY DEFAULT ---
+            document.getElementById('resImage').src = "images/fraud_alert_placeholder.jpg"; 
+            
+            document.getElementById('resAmount').innerText = "0";
+            document.getElementById('resType').innerText = "UNKNOWN";
+            document.getElementById('resExpiry').innerText = "N/A";
+            document.getElementById('resArea').innerText = "Unregistered Node";
+            document.getElementById('resStatus').innerText = "FRAUDULENT (Counterfeit / Stolen / Unverified)";
+            
+            // Lock the display colors to red for maximum threat visibility
+            document.getElementById('resStatus').style.color = "#ff3333";
+            document.getElementById('resExpiry').style.color = "#ff3333";
+            document.getElementById('resType').style.color = "#ff3333";
+        }
+        
+        // Render the results GUI
+        resultsDiv.style.display = "block";
+    }
+
+    function reportFraud() {
+        if(!currentSerial) return;
+        
+        const adminEmail = "plonhfg@gmail.com"; // Replace with your actual email
+        const subject = encodeURIComponent(`URGENT FRAUD REPORT: PLC Note ${currentSerial}`);
+        
+        let bodyText = "";
+        
+        if (database[currentSerial]) {
+            // If the note exists but is flagged
+            const dbEntry = database[currentSerial];
+            bodyText = `Admin,\n\nI am reporting a suspicious or counterfeited PLONHFG Credit note. Here are the details logged from the system:\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry: ${dbEntry.expiryDate}\nRegistered Location: ${dbEntry.localArea}\nCurrent Status: ${dbEntry.fraudStatus}\n\nAdditional details about who gave me this note:\n[TYPE YOUR DETAILS HERE]`;
+        } else {
+            // If the note is completely unknown to the system
+            bodyText = `Admin,\n\nI am reporting a completely UNKNOWN serial code that someone attempted to use. It failed the Central Bank checksum.\n\nAttempted Serial Code: ${currentSerial}\n\nAdditional details about who gave me this counterfeit note:\n[TYPE YOUR DETAILS HERE]`;
+        }
+        
+        window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+    }
+</script>
+
+</body>
+</html>
