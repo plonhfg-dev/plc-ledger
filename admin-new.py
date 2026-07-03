@@ -3,6 +3,7 @@ import json
 import os
 import random
 from collections import defaultdict
+from decimal import Decimal, InvalidOperation
 
 try:
     from reportlab.lib.pagesizes import letter
@@ -82,8 +83,28 @@ def generate_pdf_batch(batch_num, serials, output_path, batch_code):
     c.save()
     return True
 
+def get_print_number(serial):
+    """
+    Extracts the 4-digit serial print number from the format AAA123412345.
+    Returns an integer for accurate small vs greater filtering comparisons.
+    """
+    try:
+        return int(serial[3:7])
+    except (ValueError, IndexError):
+        return 0
+
+def safe_decimal_parse(val):
+    """
+    Safely parses any input value into a Decimal to preserve extreme precision.
+    """
+    try:
+        return Decimal(str(val).strip())
+    except (InvalidOperation, ValueError):
+        return Decimal('0')
+
 def get_common_mint_data():
-    amount = input("Enter Denomination Amount (e.g., 100): ").strip()
+    amount_raw = input("Enter Denomination Amount (e.g., 100 or 1.00000000000000000001): ").strip()
+    amount = str(safe_decimal_parse(amount_raw))
     
     is_forever = input("Is this a Forever Note? (y/n): ").strip().lower()
     if is_forever == 'y':
@@ -105,7 +126,7 @@ def main():
 
     while True:
         print("\n" + "="*50)
-        print("   PLONHFG CENTRAL BANK - ERP ROOT ACCESS v5.0")
+        print("   PLONHFG CENTRAL BANK - ERP ROOT ACCESS v6.0")
         print("="*50)
         print("1. [MINT] Single Note Generation")
         print("2. [BULK MINT] Mass Assembly Line")
@@ -136,7 +157,7 @@ def main():
             amount, note_type, expiry, img_path, area, status = get_common_mint_data()
             
             db[serial] = {
-                "amount": int(amount) if amount.isdigit() else amount,
+                "amount": amount,
                 "type": note_type,
                 "expiryDate": expiry,
                 "localArea": area,
@@ -153,8 +174,8 @@ def main():
         elif choice == '2':
             print("\n--- BULK MINT ASSEMBLY LINE ---")
             batch_code = input("Enter 3-Letter Batch Code (e.g., ABC): ").strip().upper()
-            start_num = int(input("Enter STARTING Note Number (e.g., 1): ").strip())
-            end_num = int(input("Enter ENDING Note Number (e.g., 50): ").strip())
+            start_num = int(input("Enter STARTING Note Number (1-9999): ").strip())
+            end_num = int(input("Enter ENDING Note Number (1-9999): ").strip())
 
             print("\n[CONFIGURE MASTER PAYLOAD]")
             amount, note_type, expiry, img_path, area, status = get_common_mint_data()
@@ -169,7 +190,7 @@ def main():
 
                 if serial not in db:
                     db[serial] = {
-                        "amount": int(amount) if amount.isdigit() else amount,
+                        "amount": amount,
                         "type": note_type,
                         "expiryDate": expiry,
                         "localArea": area,
@@ -203,7 +224,8 @@ def main():
 
             batch_size = 10 if note_category == 'old' else 8
             batch_code = input("Enter 3-Letter Batch Code (e.g., ABC): ").strip().upper()
-            amount = input("Enter Denomination Amount (e.g., 100): ").strip()
+            amount_raw = input("Enter Denomination Amount (e.g., 100): ").strip()
+            amount = str(safe_decimal_parse(amount_raw))
 
             is_forever = input("Is this a Forever Note? (y/n): ").strip().lower()
             if is_forever == 'y':
@@ -233,7 +255,7 @@ def main():
 
                 if serial not in db:
                     db[serial] = {
-                        "amount": int(amount) if amount.isdigit() else amount,
+                        "amount": amount,
                         "type": note_type,
                         "expiryDate": "N/A (Never Expires)" if is_forever == 'y' else input(f"Enter Expiry Date for batch [{i}/{num_notes}] (e.g., '15 June 2026'): ").strip(),
                         "localArea": area,
@@ -297,7 +319,7 @@ def main():
             print("\n--- MINT CORRECTION QA (Orphan Node Sweeper) ---")
             prefix_map = defaultdict(list)
             for serial in db.keys():
-                prefix = serial[:7]
+                prefix = serial[:7] # AAA + 1234 covers the printing batch identifier
                 prefix_map[prefix].append(serial)
 
             collisions_found = False
@@ -306,7 +328,7 @@ def main():
                     collisions_found = True
                     print(f"\n[!] COLLISION DETECTED for Physical Note: {prefix}")
                     for idx, s in enumerate(serial_list):
-                        print(f"  [{idx + 1}] {s} (Area: {db[s]['localArea']}, Status: {db[s]['fraudStatus']})")
+                        print(f"  [{idx + 1}] {s} (Area: {db[s].get('localArea', '')}, Status: {db[s].get('fraudStatus', '')})")
 
                     keep_idx = input(f"Which one is the REAL physical note? (1-{len(serial_list)}, or 'skip'): ").strip()
                     if keep_idx.isdigit() and 1 <= int(keep_idx) <= len(serial_list):
@@ -323,18 +345,17 @@ def main():
 
         elif choice == '7':
             print("\n" + "="*50)
-            print("   MACRO-ECONOMIC DASHBOARD v2.0")
+            print("   MACRO-ECONOMIC DASHBOARD v3.0 (HIGH-PRECISION)")
             print("="*50)
 
             total_notes = len(db)
-            total_value = 0
+            total_value = Decimal('0')
 
-            # Dictionary structure: grouped_data[ForeverStatus][Denomination][BatchCode] = [List of Serials]
             grouped_data = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
 
             for serial, data in db.items():
-                amt = data.get('amount', 0)
-                total_value += amt if isinstance(amt, int) else 0
+                amt = safe_decimal_parse(data.get('amount', 0))
+                total_value += amt
 
                 is_forever = "Yes" if "Forever" in data.get('type', '') else "No (Time Limited)"
                 batch = serial[:3]
@@ -350,7 +371,10 @@ def main():
                     for batch in sorted(grouped_data[forever_status][amt].keys()):
                         serials = grouped_data[forever_status][amt][batch]
                         print(f"  │  ├─ Batch Group [{batch}]")
-                        for s in serials:
+                        
+                        # Sorted purely by the 4-digit serial print sequence (ignoring the random 5 digits)
+                        sorted_serials = sorted(serials, key=get_print_number)
+                        for s in sorted_serials:
                             print(f"  │  │   - {s}")
                         print(f"  │  │  (Total count for {batch}: {len(serials)})")
                 print("  │")
@@ -359,12 +383,11 @@ def main():
 
         elif choice == '8':
             print("\n" + "="*50)
-            print("   ADVANCED FILTER DASHBOARD")
+            print("   ADVANCED FILTER DASHBOARD (HIGH-PRECISION)")
             print("="*50)
 
-            # Get unique batches and locations
             batches = sorted(set(serial[:3] for serial in db.keys()))
-            locations = sorted(set(entry['localArea'] for entry in db.values()))
+            locations = sorted(set(entry.get('localArea', '') for entry in db.values()))
 
             print("\nAvailable Batches:", ", ".join(batches))
             print("Available Locations:", ", ".join(locations))
@@ -390,38 +413,49 @@ def main():
                 print(f"   FILTER RESULTS: {len(filtered_notes)} NOTE(S) FOUND")
                 print("="*50)
 
-                # Display batch summary with highest denomination
-                batch_stats = defaultdict(lambda: {'count': 0, 'max_amount': 0, 'max_serial': '', 'type': ''})
+                # Track metrics using Decimal and 4-digit print rules
+                batch_stats = defaultdict(lambda: {'count': 0, 'max_amount': Decimal('0'), 'max_serial': '', 'type': '', 'max_print_num': -1})
+                
                 for serial, data in filtered_notes:
                     batch = serial[:3]
                     batch_stats[batch]['count'] += 1
-                    amount = data.get('amount', 0)
-                    if amount > batch_stats[batch]['max_amount']:
+                    amount = safe_decimal_parse(data.get('amount', 0))
+                    print_num = get_print_number(serial)
+
+                    # Check highest denomination, then highest print sequence code if amounts are tied
+                    if amount > batch_stats[batch]['max_amount'] or \
+                       (amount == batch_stats[batch]['max_amount'] and print_num > batch_stats[batch]['max_print_num']):
                         batch_stats[batch]['max_amount'] = amount
                         batch_stats[batch]['max_serial'] = serial
                         batch_stats[batch]['type'] = data.get('type', '')
+                        batch_stats[batch]['max_print_num'] = print_num
 
                 print("\n[ BATCH SUMMARY ]")
-                print(f"{'Batch':<8} {'Count':<8} {'Max Denom':<12} {'Highest Serial':<20} {'Type':<20}")
-                print("-" * 70)
+                print(f"{'Batch':<8} {'Count':<8} {'Max Denom':<25} {'Highest Serial':<20} {'Type':<20}")
+                print("-" * 85)
                 for batch in sorted(batch_stats.keys()):
                     stats = batch_stats[batch]
-                    print(f"{batch:<8} {stats['count']:<8} {stats['max_amount']} PLC{'':<5} {stats['max_serial']:<20} {stats['type']:<20}")
+                    print(f"{batch:<8} {stats['count']:<8} {str(stats['max_amount']):<25} {stats['max_serial']:<20} {stats['type']:<20}")
 
                 print("\n[ DETAILED NOTES LIST ]")
-                print(f"{'Serial':<15} {'Amount':<10} {'Type':<20} {'Status':<30} {'Location':<15}")
-                print("-" * 90)
+                print(f"{'Serial':<15} {'Amount':<25} {'Type':<20} {'Status':<30} {'Location':<15}")
+                print("-" * 110)
 
-                sorted_notes = sorted(filtered_notes, key=lambda x: x[1].get('amount', 0), reverse=True)
+                # Sorting via Decimal amount value then print sequence number
+                sorted_notes = sorted(
+                    filtered_notes, 
+                    key=lambda x: (safe_decimal_parse(x[1].get('amount', 0)), get_print_number(x[0])), 
+                    reverse=True
+                )
                 for serial, data in sorted_notes:
                     amount = data.get('amount', 0)
                     note_type = data.get('type', '')
                     status = data.get('fraudStatus', '')
                     location = data.get('localArea', '')
-                    print(f"{serial:<15} {amount} PLC{'':<5} {note_type:<20} {status:<30} {location:<15}")
+                    print(f"{serial:<15} {str(amount):<25} {note_type:<20} {status:<30} {location:<15}")
 
-                total_value = sum(data.get('amount', 0) for _, data in filtered_notes if isinstance(data.get('amount', 0), int))
-                print("-" * 90)
+                total_value = sum(safe_decimal_parse(data.get('amount', 0)) for _, data in filtered_notes)
+                print("-" * 110)
                 print(f"TOTAL FILTERED VALUE: {total_value} PLC")
 
             input("\n[SYSTEM] Press ENTER to return to the main menu...")
@@ -439,8 +473,8 @@ def main():
                 for key in db[serial].keys():
                     new_val = input(f"Update {key} [{db[serial][key]}]: ").strip()
                     if new_val != "":
-                        if key == "amount" and new_val.isdigit():
-                            db[serial][key] = int(new_val)
+                        if key == "amount":
+                            db[serial][key] = str(safe_decimal_parse(new_val))
                         else:
                             db[serial][key] = new_val
                 print(f"[+] OVERWRITE SUCCESS: {serial} updated.")

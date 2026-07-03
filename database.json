@@ -1262,5 +1262,85 @@
         "localArea": "NPC",
         "fraudStatus": "Clean - Verified Valid",
         "imagePath": "images/plc_1_forever.jpg"
+    },
+    "ZZZ000139710": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ000277020": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ000368720": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ000475564": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ000532363": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ000639868": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ000745613": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ000874576": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ000946468": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
+    },
+    "ZZZ001048959": {
+        "amount": "1,000,000,000,000,000,000,000",
+        "type": "Forever PLC",
+        "expiryDate": "N/A (Never Expires)",
+        "localArea": "Mass Cash Transfer",
+        "fraudStatus": "Clean - Verified Valid",
+        "imagePath": "images/plc_1,000,000,000,000,000,000,000_forever.jpg"
     }
 }

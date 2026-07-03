@@ -20,7 +20,7 @@
 <div class="container">
     <h2>[ PLONHFG Central Bank Explorer ]</h2>
     <p>Enter your 12-character PLC Serial Code to verify asset integrity and Time-to-Live (TTL).</p>
-    
+
     <input type="text" id="serialInput" placeholder="e.g., ABC004589479">
     <button onclick="checkLedger()">Verify Note</button>
 
@@ -32,7 +32,7 @@
         <p><strong>Expiration Date:</strong> <span id="resExpiry"></span></p>
         <p><strong>Issue Area:</strong> <span id="resArea"></span></p>
         <p><strong>Banknote Status:</strong> <span id="resStatus"></span></p>
-        
+
         <button id="fraudBtn" class="danger" onclick="reportFraud()">REPORT COUNTERFEIT TO ADMIN</button>
     </div>
 </div>
@@ -53,10 +53,10 @@
     function checkLedger() {
         const input = document.getElementById('serialInput').value.trim();
         const resultsDiv = document.getElementById('results');
-        
+
         // Save the input so the Report Fraud button knows what to send
-        currentSerial = input; 
-        
+        currentSerial = input;
+
         if (database[input]) {
             // --- VALID NODE FOUND IN LEDGER ---
             document.getElementById('resImage').src = database[input].imagePath;
@@ -65,7 +65,7 @@
             document.getElementById('resExpiry').innerText = database[input].expiryDate;
             document.getElementById('resArea').innerText = database[input].localArea;
             document.getElementById('resStatus').innerText = database[input].fraudStatus;
-            
+
             // Color coding the status
             if(database[input].fraudStatus.includes("FLAGGED")) {
                 document.getElementById('resStatus').style.color = "#ff3333";
@@ -79,35 +79,35 @@
             } else {
                 document.getElementById('resExpiry').style.color = "#00ff00";
             }
-            
+
         } else {
             // --- UNKNOWN SERIAL: ZERO-TRUST DENY BY DEFAULT ---
-            document.getElementById('resImage').src = "images/fraud_alert_placeholder.jpg"; 
-            
+            document.getElementById('resImage').src = "images/fraud_alert_placeholder.jpg";
+
             document.getElementById('resAmount').innerText = "0";
             document.getElementById('resType').innerText = "UNKNOWN";
             document.getElementById('resExpiry').innerText = "N/A";
             document.getElementById('resArea').innerText = "Unregistered Node";
             document.getElementById('resStatus').innerText = "FRAUDULENT (Counterfeit / Stolen / Unverified)";
-            
+
             // Lock the display colors to red for maximum threat visibility
             document.getElementById('resStatus').style.color = "#ff3333";
             document.getElementById('resExpiry').style.color = "#ff3333";
             document.getElementById('resType').style.color = "#ff3333";
         }
-        
+
         // Render the results GUI
         resultsDiv.style.display = "block";
     }
 
     function reportFraud() {
         if(!currentSerial) return;
-        
+
         const adminEmail = "plonhfg@gmail.com"; // Replace with your actual email
         const subject = encodeURIComponent(`URGENT FRAUD REPORT: PLC Note ${currentSerial}`);
-        
+
         let bodyText = "";
-        
+
         if (database[currentSerial]) {
             // If the note exists but is flagged
             const dbEntry = database[currentSerial];
@@ -116,7 +116,7 @@
             // If the note is completely unknown to the system
             bodyText = `Admin,\n\nI am reporting a completely UNKNOWN serial code that someone attempted to use. It failed the Central Bank checksum.\n\nAttempted Serial Code: ${currentSerial}\n\nAdditional details about who gave me this counterfeit note:\n[TYPE YOUR DETAILS HERE]`;
         }
-        
+
         window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
     }
 </script>
