@@ -32,8 +32,8 @@
         <p><strong>Expiration Date:</strong> <span id="resExpiry"></span></p>
         <p><strong>Issue Area:</strong> <span id="resArea"></span></p>
         <p><strong>Banknote Status:</strong> <span id="resStatus"></span></p>
-        <button id="fraudBtn" class="danger" onclick="reportFraud()">REPORT FRADULENT TO ADMIN</button>
-         <button id="fraudBtn" class="danger" onclick="reporttoadmin()">REPORT TO ADMIN</button>
+        <button id="fraudBtn" class="danger" onclick="reportFraud()">REPORT FRAUDULENT TO ADMIN</button>
+        <button id="reportBtn" class="danger" onclick="reporttoadmin()">REPORT TO ADMIN</button>
     </div>
 </div>
 
@@ -111,26 +111,28 @@
         if (database[currentSerial]) {
             // If the note exists but is flagged
             const dbEntry = database[currentSerial];
-            bodyText = `Admin,\n\nI am reporting a suspicious or counterfeited PLONHFG Credit note. Here are the details logged from the system:\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry: ${dbEntry.expiryDate}\nRegistered Location: ${dbEntry.localArea}\nCurrent Status: ${dbEntry.fraudStatus}\n\nAdditional details about who gave me this note:\n[TYPE YOUR DETAILS HERE]`;
+            bodyText = `Admin,\n\nI am reporting a suspicious or counterfeited PLONHFG Credit note. Here are the details logged from the system:\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry: ${dbEntry.expiryDate}\nArea: ${dbEntry.localArea}\nStatus: ${dbEntry.fraudStatus}\n\nPlease investigate immediately.`;
         } else {
             // If the note is completely unknown to the system
-            bodyText = `Admin,\n\nI am reporting a completely UNKNOWN serial code that someone attempted to use. It failed the Central Bank checksum.\n\nAttempted Serial Code: ${currentSerial}\n\nAdditional details about who gave me this counterfeit note:\n[TYPE YOUR DETAILS HERE]`;
+            bodyText = `Admin,\n\nI am reporting a completely UNKNOWN serial code that someone attempted to use. It failed the Central Bank checksum.\n\nAttempted Serial Code: ${currentSerial}\n\nAdditional Information: This note is not registered in the ledger and should be considered counterfeit or stolen.`;
         }
 
         window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
     }
 
-       function reporttoadmin() {
+    function reporttoadmin() {
         if(!currentSerial) return;
 
         const adminEmail = "plonhfg@gmail.com"; // Replace with your actual email
-        const subject = encodeURIComponent(`URGENT FRAUD REPORT: PLC Note ${currentSerial}`);
+        const subject = encodeURIComponent(`REPORT: PLC Note ${currentSerial}`);
 
         let bodyText = "";
 
-      
-            bodyText = `Admin,\n\nI am reporting a PLONHFG Credit note. Here are the details logged from the system:\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry: ${dbEntry.expiryDate}\nRegistered Location: ${dbEntry.localArea}\nCurrent Status: ${dbEntry.fraudStatus}\n\nAdditional details about who gave me this note:\n[TYPE YOUR DETAILS HERE]`;
-       
+        if (database[currentSerial]) {
+            const dbEntry = database[currentSerial];
+            bodyText = `Admin,\n\nI am reporting a PLONHFG Credit note. Here are the details logged from the system:\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry: ${dbEntry.expiryDate}\nArea: ${dbEntry.localArea}\nStatus: ${dbEntry.fraudStatus}\n\nPlease review and take appropriate action.`;
+        } else {
+            bodyText = `Admin,\n\nI am reporting an unknown serial code:\n\nAttempted Serial Code: ${currentSerial}\n\nThis note was not found in the ledger.`;
         }
 
         window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
