@@ -3,37 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLONHFVERSE - PLC Ledger</title>
+    <title>PLC Verifier</title>
     <style>
-        body { font-family: monospace; background-color: #ffffff; color: #00ff00; padding: 20px; }
-        .container { max-width: 600px; margin: auto; border: 1px solid #00ff00; padding: 20px; background: #1a1a1a; }
-        input, button { background: #222; color: #00ff00; border: 1px solid #00ff00; padding: 10px; margin-top: 10px; width: 100%; box-sizing: border-box; font-family: monospace; font-size: 16px;}
-        button:hover { background: #00ff00; color: #ffffff; cursor: pointer; font-weight: bold;}
-        #results { margin-top: 20px; display: none; border-top: 1px dashed #00ff00; padding-top: 20px; }
-        .danger { color: #ff3333; border-color: #ff3333; }
-        .danger:hover { background: #ff3333; color: #ffffff; }
-        .asset-image { width: 100%; max-width: 400px; border: 2px solid #00ff00; border-radius: 5px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;}
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --secondary-dark: #047857;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --surface-alt: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --error: #ef4444;
+            --error-bg: #fee2e2;
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-bg: #fef3c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #e0f2fe) 100%;
+            color: var(--text-primary);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .container {
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 15px;
+            color: var(--text-primary);
+            background: var(--surface);
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        button {
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.danger {
+            background: var(--error);
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button.danger:hover {
+            background: #dc2626;
+        }
+
+        #results {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .asset-image {
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--surface-alt);
+        }
+
+        .result-card {
+            background: var(--surface-alt);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .result-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .result-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .status-box {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        .status-valid {
+            background: var(--success-bg);
+            color: var(--success);
+            border-left: 4px solid var(--success);
+        }
+
+        .status-fraud {
+            background: var(--error-bg);
+            color: var(--error);
+            border-left: 4px solid var(--error);
+        }
+
+        .status-warning {
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-left: 4px solid var(--warning);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>[ PLONHFG Central Bank Explorer ]</h2>
-    <p>Enter your 12-character PLC Serial Code to verify asset integrity and Time-to-Live (TTL).</p>
+<div>
+    <div class="header">
+        <h1>🔐 PLC Verifier</h1>
+        <p>Verify PLC note authenticity and status</p>
+    </div>
 
-    <input type="text" id="serialInput" placeholder="e.g., ABC004589479">
-    <button onclick="checkLedger()">Verify Note</button>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="serialInput" placeholder="Enter 12-character serial code">
+            <button onclick="checkLedger()">Verify</button>
+        </div>
 
-    <div id="results">
-        <img id="resImage" class="asset-image" src="" alt="PLC Visual Reference">
+        <div id="results">
+            <img id="resImage" class="asset-image" src="" alt="PLC Visual Reference">
 
-        <p><strong>Amount:</strong> <span id="resAmount"></span> PLC</p>
-        <p><strong>Note Type:</strong> <span id="resType"></span></p>
-        <p><strong>Expiration Date:</strong> <span id="resExpiry"></span></p>
-        <p><strong>Issue Area:</strong> <span id="resArea"></span></p>
-        <p><strong>Banknote Status:</strong> <span id="resStatus"></span></p>
-        <button id="fraudBtn" class="danger" onclick="reportFraud()">REPORT FRAUDULENT TO ADMIN</button>
-        <button id="reportBtn" class="danger" onclick="reporttoadmin()">REPORT TO ADMIN</button>
+            <div class="result-card">
+                <div class="result-item">
+                    <div class="result-label">Amount</div>
+                    <div class="result-value"><span id="resAmount">-</span> PLC</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Note Type</div>
+                    <div class="result-value"><span id="resType">-</span></div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Expiration Date</div>
+                    <div class="result-value"><span id="resExpiry">-</span></div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Issue Area</div>
+                    <div class="result-value"><span id="resArea">-</span></div>
+                </div>
+            </div>
+
+            <div id="statusBox" class="status-box"></div>
+
+            <button id="fraudBtn" class="danger" onclick="reportFraud()" style="display: none;">
+                🚨 Report as Fraudulent
+            </button>
+            <button id="reportBtn" class="danger" onclick="reporttoadmin()" style="display: none;">
+                📧 Report to Admin
+            </button>
+        </div>
     </div>
 </div>
 
@@ -41,7 +284,6 @@
     let database = {};
     let currentSerial = "";
 
-    // Fetch the master ledger from the GitHub server when the page loads
     fetch('database.json')
         .then(response => response.json())
         .then(data => {
@@ -51,92 +293,108 @@
         .catch(error => console.error('Error loading database:', error));
 
     function checkLedger() {
-        const input = document.getElementById('serialInput').value.trim();
+        const input = document.getElementById('serialInput').value.trim().toUpperCase();
         const resultsDiv = document.getElementById('results');
 
-        // Save the input so the Report Fraud button knows what to send
+        if (!input) {
+            alert('Please enter a serial code');
+            return;
+        }
+
         currentSerial = input;
 
         if (database[input]) {
             // --- VALID NODE FOUND IN LEDGER ---
-            document.getElementById('resImage').src = database[input].imagePath;
-            document.getElementById('resAmount').innerText = database[input].amount;
-            document.getElementById('resType').innerText = database[input].type;
-            document.getElementById('resExpiry').innerText = database[input].expiryDate;
-            document.getElementById('resArea').innerText = database[input].localArea;
-            document.getElementById('resStatus').innerText = database[input].fraudStatus;
+            const entry = database[input];
+            
+            document.getElementById('resImage').src = entry.imagePath;
+            document.getElementById('resAmount').innerText = entry.amount;
+            document.getElementById('resType').innerText = entry.type;
+            document.getElementById('resExpiry').innerText = entry.expiryDate;
+            document.getElementById('resArea').innerText = entry.localArea;
 
-            // Color coding the status
-            if(database[input].fraudStatus.includes("FLAGGED")) {
-                document.getElementById('resStatus').style.color = "#ff3333";
+            const statusBox = document.getElementById('statusBox');
+            const fraudBtn = document.getElementById('fraudBtn');
+            const reportBtn = document.getElementById('reportBtn');
+
+            if (entry.fraudStatus.includes("FLAGGED")) {
+                statusBox.className = 'status-box status-fraud';
+                statusBox.innerHTML = '⚠️ <strong>Status:</strong> FLAGGED - Suspicious Activity Detected';
+                fraudBtn.style.display = 'block';
+                reportBtn.style.display = 'block';
             } else {
-                document.getElementById('resStatus').style.color = "#00ff00"; // Green for clean
+                statusBox.className = 'status-box status-valid';
+                statusBox.innerHTML = '✓ <strong>Status:</strong> Valid - Note Verified';
+                fraudBtn.style.display = 'none';
+                reportBtn.style.display = 'block';
             }
 
-            // Color coding the expiry
-            if(database[input].type === "Time Limited PLC") {
-                document.getElementById('resExpiry').style.color = "yellow";
-            } else {
-                document.getElementById('resExpiry').style.color = "#00ff00";
+            // Highlight expiry for time-limited notes
+            if (entry.type === "Time Limited PLC") {
+                document.getElementById('resExpiry').style.color = var(--warning);
             }
 
         } else {
             // --- UNKNOWN SERIAL: ZERO-TRUST DENY BY DEFAULT ---
             document.getElementById('resImage').src = "images/fraud_alert_placeholder.jpg";
-
             document.getElementById('resAmount').innerText = "0";
             document.getElementById('resType').innerText = "UNKNOWN";
             document.getElementById('resExpiry').innerText = "N/A";
             document.getElementById('resArea').innerText = "Unregistered Node";
-            document.getElementById('resStatus').innerText = "FRAUDULENT (Counterfeit / Stolen / Unverified)";
 
-            // Lock the display colors to red for maximum threat visibility
-            document.getElementById('resStatus').style.color = "#ff3333";
-            document.getElementById('resExpiry').style.color = "#ff3333";
-            document.getElementById('resType').style.color = "#ff3333";
+            const statusBox = document.getElementById('statusBox');
+            statusBox.className = 'status-box status-fraud';
+            statusBox.innerHTML = '✗ <strong>Status:</strong> FRAUDULENT - Counterfeit, Stolen, or Unverified';
+
+            document.getElementById('fraudBtn').style.display = 'block';
+            document.getElementById('reportBtn').style.display = 'block';
         }
 
-        // Render the results GUI
         resultsDiv.style.display = "block";
     }
 
     function reportFraud() {
-        if(!currentSerial) return;
+        if (!currentSerial) return;
 
-        const adminEmail = "plonhfg@gmail.com"; // Replace with your actual email
-        const subject = encodeURIComponent(`URGENT FRAUD REPORT: PLC Note ${currentSerial}`);
+        const adminEmail = "plonhfg@gmail.com";
+        const subject = encodeURIComponent(`FRAUD ALERT: PLC Note ${currentSerial}`);
 
         let bodyText = "";
 
         if (database[currentSerial]) {
-            // If the note exists but is flagged
             const dbEntry = database[currentSerial];
-            bodyText = `Admin,\n\nI am reporting a suspicious or counterfeited PLONHFG Credit note. Here are the details logged from the system:\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry: ${dbEntry.expiryDate}\nArea: ${dbEntry.localArea}\nStatus: ${dbEntry.fraudStatus}\n\nPlease investigate immediately.`;
+            bodyText = `Admin,\n\nI am reporting a suspicious or fraudulent PLONHFG Credit note.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nCurrent Status: ${dbEntry.fraudStatus}\n\nPlease investigate immediately.`;
         } else {
-            // If the note is completely unknown to the system
-            bodyText = `Admin,\n\nI am reporting a completely UNKNOWN serial code that someone attempted to use. It failed the Central Bank checksum.\n\nAttempted Serial Code: ${currentSerial}\n\nAdditional Information: This note is not registered in the ledger and should be considered counterfeit or stolen.`;
+            bodyText = `Admin,\n\nI am reporting an UNKNOWN serial code that failed verification.\n\nAttempted Serial Code: ${currentSerial}\n\nThis note is not registered in the central ledger and appears to be counterfeit.`;
         }
 
         window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
     }
 
     function reporttoadmin() {
-        if(!currentSerial) return;
+        if (!currentSerial) return;
 
-        const adminEmail = "plonhfg@gmail.com"; // Replace with your actual email
-        const subject = encodeURIComponent(`REPORT: PLC Note ${currentSerial}`);
+        const adminEmail = "plonhfg@gmail.com";
+        const subject = encodeURIComponent(`PLC Verification Report: ${currentSerial}`);
 
         let bodyText = "";
 
         if (database[currentSerial]) {
             const dbEntry = database[currentSerial];
-            bodyText = `Admin,\n\nI am reporting a PLONHFG Credit note. Here are the details logged from the system:\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry: ${dbEntry.expiryDate}\nArea: ${dbEntry.localArea}\nStatus: ${dbEntry.fraudStatus}\n\nPlease review and take appropriate action.`;
+            bodyText = `Admin,\n\nI am reporting a PLONHFG Credit note for your review.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry Date: ${dbEntry.expiryDate}\nIssue Area: ${dbEntry.localArea}\nStatus: ${dbEntry.fraudStatus}\n\nPlease review if needed.`;
         } else {
-            bodyText = `Admin,\n\nI am reporting an unknown serial code:\n\nAttempted Serial Code: ${currentSerial}\n\nThis note was not found in the ledger.`;
+            bodyText = `Admin,\n\nI am reporting an unknown serial code.\n\nAttempted Serial Code: ${currentSerial}\n\nThis note was not found in the ledger.`;
         }
 
         window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
     }
+
+    // Allow Enter key to trigger verification
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('serialInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkLedger();
+        });
+    });
 </script>
 
 </body>
