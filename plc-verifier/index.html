@@ -292,7 +292,7 @@
             </div>
 
             <div id="results">
-                <img id="resImage" class="asset-image" src="" alt="PLC Visual Reference">
+                <img id="resImage" class="asset-image" src="" alt="PLC Visual Reference" onerror="handleImageError()">
 
                 <div class="result-card">
                     <div class="result-item">
@@ -338,6 +338,12 @@
         })
         .catch(error => console.error('Error loading database:', error));
 
+    function handleImageError() {
+        // Gracefully handle image loading errors
+        console.warn('Image failed to load, displaying results anyway');
+        document.getElementById('resImage').style.display = 'none';
+    }
+
     function checkLedger() {
         const input = document.getElementById('serialInput').value.trim().toUpperCase();
         const resultsDiv = document.getElementById('results');
@@ -353,7 +359,10 @@
             // --- VALID NODE FOUND IN LEDGER ---
             const entry = database[input];
             
-            document.getElementById('resImage').src = entry.imagePath;
+            const imageElement = document.getElementById('resImage');
+            imageElement.src = entry.imagePath;
+            imageElement.style.display = 'block';
+            
             document.getElementById('resAmount').innerText = entry.amount;
             document.getElementById('resType').innerText = entry.type;
             document.getElementById('resExpiry').innerText = entry.expiryDate;
@@ -377,12 +386,15 @@
 
             // Highlight expiry for time-limited notes
             if (entry.type === "Time Limited PLC") {
-                document.getElementById('resExpiry').style.color = var(--warning);
+                document.getElementById('resExpiry').style.color = '#f59e0b';
             }
 
         } else {
             // --- UNKNOWN SERIAL: ZERO-TRUST DENY BY DEFAULT ---
-            document.getElementById('resImage').src = "images/fraud_alert_placeholder.jpg";
+            const imageElement = document.getElementById('resImage');
+            imageElement.src = "images/fraud_alert_placeholder.jpg";
+            imageElement.style.display = 'block';
+            
             document.getElementById('resAmount').innerText = "0";
             document.getElementById('resType').innerText = "UNKNOWN";
             document.getElementById('resExpiry').innerText = "N/A";
@@ -409,9 +421,9 @@
 
         if (database[currentSerial]) {
             const dbEntry = database[currentSerial];
-            bodyText = `Admin,\n\nI am reporting a suspicious or fraudulent PLONHFG Credit note.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nCurr[...]`;
+            bodyText = `Admin,\n\nI am reporting a suspicious or fraudulent PLONHFG Credit note.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry Date: ${dbEntry.expiryDate}\nIssue Area: ${dbEntry.localArea}\nFraud Status: ${dbEntry.fraudStatus}\n\nPlease investigate immediately.`;
         } else {
-            bodyText = `Admin,\n\nI am reporting an UNKNOWN serial code that failed verification.\n\nAttempted Serial Code: ${currentSerial}\n\nThis note is not registered in the central ledger a[...]`;
+            bodyText = `Admin,\n\nI am reporting an UNKNOWN serial code that failed verification.\n\nAttempted Serial Code: ${currentSerial}\n\nThis note is not registered in the central ledger and appears to be counterfeit or stolen.`;
         }
 
         window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
@@ -427,7 +439,7 @@
 
         if (database[currentSerial]) {
             const dbEntry = database[currentSerial];
-            bodyText = `Admin,\n\nI am reporting a PLONHFG Credit note for your review.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry Date: [...]`;
+            bodyText = `Admin,\n\nI am reporting a PLONHFG Credit note for your review.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry Date: ${dbEntry.expiryDate}\nIssue Area: ${dbEntry.localArea}\nFraud Status: ${dbEntry.fraudStatus}\n\nPlease review as needed.`;
         } else {
             bodyText = `Admin,\n\nI am reporting an unknown serial code.\n\nAttempted Serial Code: ${currentSerial}\n\nThis note was not found in the ledger.`;
         }
