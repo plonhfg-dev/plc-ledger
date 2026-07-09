@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Registry Search</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .search-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 520px;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+        .file-picker-box {
+            background-color: #edf2f7;
+            border: 2px dashed #cbd5e0;
+            padding: 15px;
+            text-align: center;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .file-picker-box label {
+            display: inline-block;
+            background-color: #4a5568;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .file-picker-box input[type="file"] {
+            display: none;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #3498db;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .results-wrapper {
+            margin-top: 20px;
+        }
+        .result-card {
+            padding: 20px;
+            border-radius: 6px;
+            background-color: #fafbfc;
+            border-left: 4px solid #2ecc71;
+            margin-bottom: 15px;
+        }
+        .data-row {
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #34495e;
+        }
+        .data-row strong {
+            color: #2c3e50;
+            display: inline-block;
+            width: 160px;
+        }
+        .message-box {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .error { color: #c53030; background-color: #fff5f5; }
+        .success { color: #22543d; background-color: #f0fff4; }
+    </style>
+</head>
+<body>
+
+<div class="search-container">
+    <h2>Registry Search Engine</h2>
+    <div class="subtitle">Search by Serial Number, Alias, or Debt ID</div>
+
+    <div id="localFilePicker" class="file-picker-box">
+        <p style="margin: 0 0 8px 0; font-size: 14px; color: #4a5568;">Direct File Execution Detected.</p>
+        <label for="jsonUpload">Step 1: Select 'debts.json' File</label>
+        <input type="file" id="jsonUpload" accept=".json" onchange="loadLocalDatabase(event)">
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="searchInput" placeholder="Enter Serial, Alias, or Debt ID...">
+        <button onclick="executeSearch()">Search</button>
+    </div>
+
+    <div id="msgBox" class="message-box"></div>
+    <div id="resultsContainer" class="results-wrapper"></div>
+</div>
+
+<script>
+    let activeDatabase = null;
+
+    // Run automatically on page load to detect hosting mode
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.location.protocol === 'file:') {
+            // Direct open layout
+            document.getElementById('localFilePicker').style.display = 'block';
+            showMessage("Please select the debts.json file above to unlock search initialization.", "error");
+        } else {
+            // Server hosted layout (Auto-Fetch)
+            autoFetchDatabase();
+        }
+    });
+
+    // Strategy A: Server Auto-Fetch
+    async function autoFetchDatabase() {
+        try {
+            const response = await fetch('debts.json');
+            if (!response.ok) throw new Error();
+            activeDatabase = await response.json();
+            showMessage("Database linked automatically via Server connection.", "success");
+        } catch (err) {
+            showMessage("Database Fetch Failed. Ensure debts.json exists in your directory.", "error");
+        }
+    }
+
+    // Strategy B: Direct File Loading Bypass via User Selection
+    function loadLocalDatabase(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                activeDatabase = JSON.parse(e.target.result);
+                showMessage("Database parsed locally and loaded successfully!", "success");
+                document.getElementById('localFilePicker').style.filter = "grayscale(100%)";
+                document.getElementById('localFilePicker').style.opacity = "0.6";
+            } catch (err) {
+                showMessage("Error: The selected file is not a valid JSON structure.", "error");
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    function showMessage(text, type) {
+        const box = document.getElementById('msgBox');
+        box.textContent = text;
+        box.className = `message-box ${type}`;
+        box.style.display = 'block';
+    }
+
+    // Comprehensive Multi-Parameter Search Engine
+    function executeSearch() {
+        const query = document.getElementById('searchInput').value.trim().toLowerCase();
+        const resultsContainer = document.getElementById('resultsContainer');
+        resultsContainer.innerHTML = ''; // Clean previous views
+
+        if (!activeDatabase) {
+            showMessage("Error: No database data loaded yet.", "error");
+            return;
+        }
+        if (!query) {
+            showMessage("Please provide a search identifier.", "error");
+            return;
+        }
+
+        let matches = [];
+
+        // Scan the data registry structure
+        for (const [serial, record] of Object.entries(activeDatabase)) {
+            const debtId = record.debt_number ? record.debt_number.toLowerCase() : "";
+            const alias = record.alias ? record.alias.toLowerCase() : "";
+
+            // Evaluate conditional checks across all 3 metrics
+            if (serial === query || debtId === query || alias === query) {
+                matches.push({
+                    serial: serial,
+                    debt_number: record.debt_number,
+                    alias: record.alias,
+                    plc_amount: record.plc_amount,
+                    date_recorded: record.date_recorded
+                });
+            }
+        }
+
+        // Display logic engine
+        if (matches.length > 0) {
+            document.getElementById('msgBox').style.display = 'none'; // Clear errors
+            
+            matches.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.innerHTML = `
+                    <div class="data-row"><strong>Serial Number:</strong> ${item.serial}</div>
+                    <div class="data-row"><strong>Debt ID:</strong> ${item.debt_number}</div>
+                    <div class="data-row"><strong>Alphanumeric Alias:</strong> ${item.alias}</div>
+                    <div class="data-row"><strong>Associated PLC:</strong> ${item.plc_amount}</div>
+                    <div class="data-row"><strong>Date Recorded:</strong> ${item.date_recorded}</div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        } else {
+            showMessage("No matching records found for that input parameter.", "error");
+        }
+    }
+</script>
+
+</body>
+</html>
