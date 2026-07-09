@@ -37,8 +37,44 @@
             padding: 20px;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .navbar a:hover {
+            background: var(--surface-alt);
+            color: var(--primary-dark);
+        }
+
+        .content-wrapper {
+            display: flex;
             justify-content: center;
             align-items: center;
+            flex: 1;
         }
 
         .header {
@@ -214,6 +250,10 @@
         }
 
         @media (max-width: 600px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+
             .container {
                 padding: 20px;
             }
@@ -234,48 +274,54 @@
 </head>
 <body>
 
-<div>
-    <div class="header">
-        <h1>🔐 PLC Verifier</h1>
-        <p>Verify PLC note authenticity and status</p>
-    </div>
+<div class="navbar">
+    <a href="../" title="Back to homepage">🏛️ PLC Utils</a>
+</div>
 
-    <div class="container">
-        <div class="input-group">
-            <input type="text" id="serialInput" placeholder="Enter 12-character serial code">
-            <button onclick="checkLedger()">Verify</button>
+<div class="content-wrapper">
+    <div>
+        <div class="header">
+            <h1>🔐 PLC Verifier</h1>
+            <p>Verify PLC note authenticity and status</p>
         </div>
 
-        <div id="results">
-            <img id="resImage" class="asset-image" src="" alt="PLC Visual Reference">
-
-            <div class="result-card">
-                <div class="result-item">
-                    <div class="result-label">Amount</div>
-                    <div class="result-value"><span id="resAmount">-</span> PLC</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-label">Note Type</div>
-                    <div class="result-value"><span id="resType">-</span></div>
-                </div>
-                <div class="result-item">
-                    <div class="result-label">Expiration Date</div>
-                    <div class="result-value"><span id="resExpiry">-</span></div>
-                </div>
-                <div class="result-item">
-                    <div class="result-label">Issue Area</div>
-                    <div class="result-value"><span id="resArea">-</span></div>
-                </div>
+        <div class="container">
+            <div class="input-group">
+                <input type="text" id="serialInput" placeholder="Enter 12-character serial code">
+                <button onclick="checkLedger()">Verify</button>
             </div>
 
-            <div id="statusBox" class="status-box"></div>
+            <div id="results">
+                <img id="resImage" class="asset-image" src="" alt="PLC Visual Reference">
 
-            <button id="fraudBtn" class="danger" onclick="reportFraud()" style="display: none;">
-                🚨 Report as Fraudulent
-            </button>
-            <button id="reportBtn" class="danger" onclick="reporttoadmin()" style="display: none;">
-                📧 Report to Admin
-            </button>
+                <div class="result-card">
+                    <div class="result-item">
+                        <div class="result-label">Amount</div>
+                        <div class="result-value"><span id="resAmount">-</span> PLC</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Note Type</div>
+                        <div class="result-value"><span id="resType">-</span></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Expiration Date</div>
+                        <div class="result-value"><span id="resExpiry">-</span></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Issue Area</div>
+                        <div class="result-value"><span id="resArea">-</span></div>
+                    </div>
+                </div>
+
+                <div id="statusBox" class="status-box"></div>
+
+                <button id="fraudBtn" class="danger" onclick="reportFraud()" style="display: none;">
+                    🚨 Report as Fraudulent
+                </button>
+                <button id="reportBtn" class="danger" onclick="reporttoadmin()" style="display: none;">
+                    📧 Report to Admin
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -363,9 +409,9 @@
 
         if (database[currentSerial]) {
             const dbEntry = database[currentSerial];
-            bodyText = `Admin,\n\nI am reporting a suspicious or fraudulent PLONHFG Credit note.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nCurrent Status: ${dbEntry.fraudStatus}\n\nPlease investigate immediately.`;
+            bodyText = `Admin,\n\nI am reporting a suspicious or fraudulent PLONHFG Credit note.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nCurr[...]`;
         } else {
-            bodyText = `Admin,\n\nI am reporting an UNKNOWN serial code that failed verification.\n\nAttempted Serial Code: ${currentSerial}\n\nThis note is not registered in the central ledger and appears to be counterfeit.`;
+            bodyText = `Admin,\n\nI am reporting an UNKNOWN serial code that failed verification.\n\nAttempted Serial Code: ${currentSerial}\n\nThis note is not registered in the central ledger a[...]`;
         }
 
         window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
@@ -381,7 +427,7 @@
 
         if (database[currentSerial]) {
             const dbEntry = database[currentSerial];
-            bodyText = `Admin,\n\nI am reporting a PLONHFG Credit note for your review.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry Date: ${dbEntry.expiryDate}\nIssue Area: ${dbEntry.localArea}\nStatus: ${dbEntry.fraudStatus}\n\nPlease review if needed.`;
+            bodyText = `Admin,\n\nI am reporting a PLONHFG Credit note for your review.\n\nSerial Code: ${currentSerial}\nDenomination: ${dbEntry.amount} PLC\nType: ${dbEntry.type}\nExpiry Date: [...]`;
         } else {
             bodyText = `Admin,\n\nI am reporting an unknown serial code.\n\nAttempted Serial Code: ${currentSerial}\n\nThis note was not found in the ledger.`;
         }
